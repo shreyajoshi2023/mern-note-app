@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 function App() {
   const [notes, setNotes] = useState([]);
   const [content, setContent] = useState('');
@@ -13,7 +15,7 @@ function App() {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/notes');
+      const response = await axios.get(`${API_URL}/api/notes`);
       setNotes(response.data);
     } catch (error) {
       console.error('Error fetching notes:', error);
@@ -23,7 +25,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/notes', { content });
+      await axios.post(`${API_URL}/api/notes`, { content });
       setContent('');
       fetchNotes();
     } catch (error) {

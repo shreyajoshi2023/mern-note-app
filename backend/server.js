@@ -15,7 +15,7 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://192.168.56.1:27017/notes-app', { 
+mongoose.connect('mongodb://192.168.56.1:27017/notes-app', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
